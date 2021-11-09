@@ -1,18 +1,19 @@
-@REM edited by WinX
-@set ÒÆ¶¯=@cmcc
-@set ÁªÍ¨=@unicom
-@set µçĞÅ=@telecom
-@set Ğ£Ô°Íø=
+@REM Edited By WinX
+@set ç§»åŠ¨=@cmcc
+@set è”é€š=@unicom
+@set ç”µä¿¡=@telecom
+@set æ ¡å›­ç½‘=
+for /f "tokens=2 delims=:" %%b in ('ipconfig ^| find /i "ipv4" ^| findstr  /r 10\..\..*') do set IP=%%b
 
 
-@REM ĞŞ¸Ä´Ë´¦µÄÑ§ºÅ£¬ÃÜÂëÎªÄãĞ£Ô°ÍøµÄÑ§ºÅºÍÃÜÂë
-@set Ñ§ºÅ=********
-@set ÃÜÂë=******
+@REM ä¿®æ”¹æ­¤å¤„çš„å­¦å·ï¼Œå¯†ç ä¸ºä½ æ ¡å›­ç½‘çš„å­¦å·å’Œå¯†ç ï¼Œæ³¨æ„ï¼Œä¸è¦ä¹±åŠ ç©ºæ ¼
+@set å­¦å·=08192333
+@set å¯†ç =144514
 
-@REM ĞŞ¸Ä´Ë´¦µÄIPµØÖ·ÎªÄãµ±Ç°ÍøÂçµÄIPµØÖ·£¬¿ó´óµÄÒ»°ãÊÇ10¿ªÍ·µÄ
-@set IPµØÖ·=10.*.*.*
 
-@REM ĞŞ¸Ä´Ë´¦µÄÁªÍ¨ÎªÄãËùÊ¹ÓÃµÄÔËÓªÉÌµÄÃû×Ö£¬Èç£¬ÁªÍ¨£¬ÒÆ¶¯£¬µçĞÅ£¬Ğ£Ô°Íø
-@set payload=%Ñ§ºÅ%%ÁªÍ¨%
+@REM ä¿®æ”¹æ­¤å¤„çš„è”é€šä¸ºä½ æ‰€ä½¿ç”¨çš„è¿è¥å•†çš„åå­—ï¼Œå¦‚ï¼Œè”é€šï¼Œç§»åŠ¨ï¼Œç”µä¿¡ï¼Œæ ¡å›­ç½‘
+@set payload=%å­¦å·%%è”é€š%
 
-curl "http://10.2.5.251:801/eportal/?c=Portal&a=login&login_method=1&user_account=%payload%&user_password=%ÃÜÂë%&wlan_user_ip=%IPµØÖ·%"
+
+set payload=%å­¦å·%%æ ¡å›­ç½‘%
+curl "http://10.2.5.251:801/eportal/?c=Portal&a=login&login_method=1&user_account=%payload%&user_password=%å¯†ç %&wlan_user_ip=%IP:~1,12%"
