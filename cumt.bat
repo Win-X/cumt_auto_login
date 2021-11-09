@@ -15,5 +15,4 @@ for /f "tokens=2 delims=:" %%b in ('ipconfig ^| find /i "ipv4" ^| findstr  /r 10
 @set payload=%学号%%联通%
 
 
-set payload=%学号%%校园网%
 curl "http://10.2.5.251:801/eportal/?c=Portal&a=login&login_method=1&user_account=%payload%&user_password=%密码%&wlan_user_ip=%IP:~1,12%"
