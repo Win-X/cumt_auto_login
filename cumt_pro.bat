@@ -4,27 +4,27 @@ start mshta vbscript:createobject("wscript.shell").run("""%~0"" hide",0)(window.
 :CmdBegin
 @set flag=1
 @set IP=
-@set ÒÆ¶¯=@cmcc
-@set ÁªÍ¨=@unicom
-@set µçĞÅ=@telecom
-@set Ğ£Ô°Íø=
+@set ç§»åŠ¨=@cmcc
+@set è”é€š=@unicom
+@set ç”µä¿¡=@telecom
+@set æ ¡å›­ç½‘=
 
 
 
-@REM ĞŞ¸Ä´Ë´¦µÄÑ§ºÅ£¬ÃÜÂëÎªÄãĞ£Ô°ÍøµÄÑ§ºÅºÍÃÜÂë£¬×¢Òâ£¬²»ÒªÂÒ¼Ó¿Õ¸ñ
-@set Ñ§ºÅ=08192947
-@set ÃÜÂë=263013
+@REM ä¿®æ”¹æ­¤å¤„çš„å­¦å·ï¼Œå¯†ç ä¸ºä½ æ ¡å›­ç½‘çš„å­¦å·å’Œå¯†ç ï¼Œæ³¨æ„ï¼Œä¸è¦ä¹±åŠ ç©ºæ ¼
+@set å­¦å·=08191234
+@set å¯†ç =114514
 
 
-@REM ĞŞ¸Ä´Ë´¦µÄÁªÍ¨ÎªÄãËùÊ¹ÓÃµÄÔËÓªÉÌµÄÃû×Ö£¬Èç£¬ÁªÍ¨£¬ÒÆ¶¯£¬µçĞÅ£¬Ğ£Ô°Íø
-@set upload=%Ñ§ºÅ%%ÁªÍ¨%
+@REM ä¿®æ”¹æ­¤å¤„çš„è”é€šä¸ºä½ æ‰€ä½¿ç”¨çš„è¿è¥å•†çš„åå­—ï¼Œå¦‚ï¼Œè”é€šï¼Œç§»åŠ¨ï¼Œç”µä¿¡ï¼Œæ ¡å›­ç½‘
+@set upload=%å­¦å·%%è”é€š%
 
 @echo off
 :loop
 if not "%IP%"=="" (
     if "%flag%"=="1" (
         @echo on
-        curl "http://10.2.5.251:801/eportal/?c=Portal&a=login&login_method=1&user_account=%upload%&user_password=%ÃÜÂë%&wlan_user_ip=%IP:~1,12%"
+        curl "http://10.2.5.251:801/eportal/?c=Portal&a=login&login_method=1&user_account=%upload%&user_password=%å¯†ç %&wlan_user_ip=%IP:~1,12%"
         @echo off
         set flag=0  
         timeout /T 2
@@ -38,5 +38,5 @@ if not "%IP%"=="" (
     timeout /T 2
 )
 for /f "tokens=2 delims=:" %%b in ('ipconfig ^| find /i "ipv4" ^| findstr  /r 10\..\..*') do set IP=%%b
-@REM ÕâÀïÓĞbug
+@REM è¿™é‡Œæœ‰bug
 goto :loop
